@@ -27,6 +27,7 @@ const signInSuccess = (data) => {
   $('#sign-up').hide()
   $('#sign-out').show()
   $('#change-password').show()
+  $('#add-note-button').show()
   notesUI.getUsersNotes()
 }
 
@@ -44,8 +45,11 @@ const signOutSuccess = () => {
   $('#sign-up').show()
   $('#sign-in').show()
   $('#sign-out').hide()
-  $('#sign-up ').trigger('reset')
+  $('#sign-up').trigger('reset')
   $('#change-password').hide()
+  $('#add-note-button').hide()
+  // Clear out user notes
+  $('#userNotes').empty()
   showUserLoggedlMessage('Welcome! Please Sign In or Sign Up.')
 }
 const signOutFailure = (error) => {

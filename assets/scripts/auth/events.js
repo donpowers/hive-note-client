@@ -50,7 +50,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#change-password').hide()
   $('#sign-out').hide()
-  $('#add-hives-button').hide()
+  $('#add-note-button').hide()
 }
 module.exports = {
   addHandlers
