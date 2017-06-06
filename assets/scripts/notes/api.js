@@ -3,8 +3,8 @@
 const store = require('../store')
 const config = require('../config')
 
-const getUserNotes = () => {
-  console.log('api getUserNotes Called')
+const retrieveUserNotes = () => {
+  console.log('note api getUserNotes Called')
   return $.ajax({
     url: config.apiOrigin + '/my-notes',
     method: 'GET',
@@ -12,6 +12,17 @@ const getUserNotes = () => {
       Authorization: 'Token token=' + store.user.token}
   })
 }
+const createUserNote = (data) => {
+  console.log('note api createUserNotes Called', data)
+  return $.ajax({
+    url: config.apiOrigin + '/notes',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token},
+    data
+  })
+}
 module.exports = {
-  getUserNotes
+  retrieveUserNotes,
+  createUserNote
 }

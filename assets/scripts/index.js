@@ -8,8 +8,10 @@ $(() => {
 })
 
 const authEvents = require('./auth/events.js')
+const noteEvents = require('./notes/events.js')
 $(() => {
   authEvents.addHandlers()
+  noteEvents.addHandlers()
 })
 
 // use require with a reference to bundle the file and use it in this file

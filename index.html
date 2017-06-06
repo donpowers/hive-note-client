@@ -93,13 +93,13 @@
         </div>
       </div>
     </div>
-    <!-- Create Hive Modal -->
-    <div id="createHiveModal" class="modal fade" role="dialog">
+    <!-- Create Note Modal -->
+    <div id="createNoteModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Create Hive</h4>
+            <h4 class="modal-title">Create Note</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -107,32 +107,41 @@
           <div class="modal-body">
             <p id=infoModalText>Please Supply The Requested Data(Hive Name Required)</p>
             <p id=hiveNameRequired></p>
-            <form id="create-hive">
+            <p id=noUpdatesFound></p>
+            <form id="create-note">
             <fieldset>
               <div class="input-group">
                 <div class="col-sm-10">
                   <span class="input-group-addon"  id="hive-name"></span>
-                  <input type="text" name="hivedata[name]" id="name" class="form-control" placeholder="Hive Name" aria-describedby="basic-addon1">
+                  <input type="text" name="notedata[hive_name]" id="name" class="form-control" placeholder="Hive Name" aria-describedby="basic-addon1">
                 </div>
                 <div class="col-sm-10">
-                  <span class="input-group-addon" id="type-of-queen"></span>
-                  <input type="text" name="hivedata[queen]" id="queen" class="form-control" placeholder="Queen Type" aria-describedby="basic-addon1">
+                  <span class="input-group-addon" id="note-date"></span>
+                  <p>Observation Date:
+                    <input type="date" value="" name="notedata[observation_date]" id="notedate" placeholder="Observation Date" aria-describedby="basic-addon1" required>
+                  </p>
                 </div>
                 <div class="col-sm-10">
-                  <span class="input-group-addon" id="hive-location"></span>
-                  <input type="text" name="hivedata[location]" id="location" class="form-control" placeholder="Hive Location" aria-describedby="basic-addon1">
+                  <span class="input-group-addon" id="observation"></span>
+                  <input type="text" name="notedata[observe]" id="observe" class="form-control" placeholder="Notes" aria-describedby="basic-addon1">
                 </div>
                 <div class="col-sm-10">
-                  <span class="input-group-addon" id="hive-brood-supers"></span>
-                  <input type="text" name="hivedata[brood]" id="brood_supers" class="form-control" placeholder="Brood Supers" aria-describedby="basic-addon1">
+                  <span class="input-group-addon" id="task"></span>
+                  <input type="text" name="notedata[task]" id="futuretask" class="form-control" placeholder="Future Task" aria-describedby="basic-addon1">
                 </div>
                 <div class="col-sm-10">
-                  <span class="input-group-addon" id="hive-honey-supers"></span>
-                  <input type="text" name="hivedata[honey]" id="honey_supers" class="form-control" placeholder="Honey Supers" aria-describedby="basic-addon1">
+                  <span class="input-group-addon" id="task-due-date"></span>
+                  <p>Task Due Date:
+                    <input type="date" name="notedata[task_due_date]" id="taskduedate" placeholder="Future Task Complete By">
+                  </p>
+                </div>
+                <div class="col-sm-10">
+                  <span class="input-group-addon" id="task_status"></span>
+                  <input type="text" name="notedata[task_status]" id="taskstatus" class="form-control" placeholder="Task Status(Open/Closed)" aria-describedby="basic-addon1">
                 </div>
               </div>
                 <br>
-                <button type="button" class="btn btn-primary" id= "create_hive">Create Hive</button>
+                <button type="button" class="btn btn-primary" id= "create_note">Create Note</button>
             </fieldset>
             <br>
             </form>
