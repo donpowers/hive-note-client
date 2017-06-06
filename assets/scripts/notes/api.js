@@ -22,7 +22,17 @@ const createUserNote = (data) => {
     data
   })
 }
+const onDeleteNote = (id) => {
+  console.log('onDeleteNote Called data:', id)
+  return $.ajax({
+    url: config.apiOrigin + '/notes/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token}
+  })
+}
 module.exports = {
   retrieveUserNotes,
-  createUserNote
+  createUserNote,
+  onDeleteNote
 }
