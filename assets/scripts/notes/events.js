@@ -12,8 +12,28 @@ const getUserNotesSuccess = (data) => {
   const showNoteListTemplate = noteListTemplate({ notes: data.notes })
   $('.userNotes').empty()
   $('.userNotes').append(showNoteListTemplate)
+  // Add the event for delete to the class name for the delete button
+  // when it gets called parse the ID from the button name
+  // that was added in the handlebars template
+  $('.delete-note').on('click', function (event) {
+    event.preventDefault()
+    const data = event.target.id.split('-')
+    // console.log('Delete Note ID: ', data[2])
+    api.onDeleteNote(data[2])
+      .then(onDeleteSurveySuccess)
+      .catch(onDeleteSurveyFailure)
+  })
 }
-
+const onDeleteSurveySuccess = function () {
+  console.log('onDeleteSurveySuccess')
+  // Get the current list of user notes and update the UI
+  api.retrieveUserNotes()
+    .then(getUserNotesSuccess)
+    .catch(getUserNotesFailure)
+}
+const onDeleteSurveyFailure = function (error) {
+  console.log('onDeleteSurveyFailure called', error)
+}
 const getUserNotesFailure = (error) => {
   console.log('getUserNotesFailure failure', error)
   console.error(error)
