@@ -59,7 +59,40 @@ const noteCreate = {
     'task_status': ''
   }
 }
+const noteBranch = {
+  'name': '',
+  'notes': []
+}
+const noteTree = {
+  'noteBranch': []
+}
+const createNoteTree = function () {
+  if (store.notes.length === 0) {
+    return
+  }
+  let i
+  let hiveName = ''
+  let name = store.notes[0].hive_name
+
+  for (i in store.notes) {
+    hiveName = store.notes[i].hive_name
+    if (name === hiveName) {
+      noteBranch.name = name
+      noteBranch.notes.push(store.notes[i])
+    } else {
+      // new branch, save previous one
+      noteTree.noteBranch.push(noteBranch)
+      noteBranch.notes = []
+      name = hiveName
+      noteBranch.name = name
+      noteBranch.notes.push(store.notes[i])
+    }
+  }
+  // noteTree.noteBranch.push(noteBranch)
+  console.log('noteTree: ', noteTree)
+}
 module.exports = {
   validateNoteData,
-  updateFormWithNoteData
+  updateFormWithNoteData,
+  createNoteTree
 }

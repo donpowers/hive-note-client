@@ -30,6 +30,7 @@ const getUserNotesSuccess = (data) => {
     store.updateNoteID = data[2]
     note.updateFormWithNoteData(data[2])
   })
+  note.createNoteTree()
 }
 const onDeleteSurveySuccess = function () {
   console.log('onDeleteSurveySuccess')
