@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const notesUI = require('../notes/ui')
 
 const signUpSuccess = (data) => {
   console.log('signUpSuccess calledd: ', data)
@@ -26,6 +27,7 @@ const signInSuccess = (data) => {
   $('#sign-up').hide()
   $('#sign-out').show()
   $('#change-password').show()
+  notesUI.getUsersNotes()
 }
 
 const signInFailure = (error) => {
