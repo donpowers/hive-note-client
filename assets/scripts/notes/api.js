@@ -31,8 +31,20 @@ const onDeleteNote = (id) => {
       Authorization: 'Token token=' + store.user.token}
   })
 }
+
+const updateUserNote = (data, id) => {
+  console.log('updateUserNote Called:', data)
+  return $.ajax({
+    url: config.apiOrigin + '/notes/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token},
+    data
+  })
+}
 module.exports = {
   retrieveUserNotes,
   createUserNote,
-  onDeleteNote
+  onDeleteNote,
+  updateUserNote
 }

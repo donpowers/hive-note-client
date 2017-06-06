@@ -1,4 +1,5 @@
 'use strict'
+const store = require('../store')
 
 const validateNoteData = function () {
   console.log('validateNoteData called')
@@ -23,6 +24,31 @@ const validateNoteData = function () {
     return noteCreate
   }
 }
+const updateFormWithNoteData = function (id) {
+  const data = findNoteByID(id)
+  console.log('updateFormWithNoteData called', data)
+  $('#name').val(data.hive_name)
+  $('#notedate').val(data.observation_date)
+  $('#observe').val(data.observe)
+  $('#futuretask').val(data.task)
+  $('#taskduedate').val(data.task_due_date)
+  $('#taskstatus').val(data.task_status)
+  // This modal is shared update it's role
+  $('#modalTitle').text('Update Note')
+  $('#create_note').html('Update')
+  $('#createNoteModal').modal('show')
+}
+const findNoteByID = function (idMatch) {
+  let result
+  let i
+  for (i in store.notes) {
+    const id = store.notes[i].id
+    if (id == idMatch) {
+      return store.notes[i]
+    }
+  }
+  result
+}
 const noteCreate = {
   'note': {
     'hive_name': '',
@@ -34,5 +60,6 @@ const noteCreate = {
   }
 }
 module.exports = {
-  validateNoteData
+  validateNoteData,
+  updateFormWithNoteData
 }
