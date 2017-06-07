@@ -7,41 +7,45 @@ const api = require('./api')
 
 const getUserNotesSuccess = (data) => {
   console.log('getUserNotesSuccess success', data)
-  store.notes = data.notes
-  note.createNoteTree()
-  console.log('data.notes success', data.notes)
-  console.log('getUserNotesSuccess noteTree: ', store.noteTree)
-  const showNoteListTemplate = noteListTemplate({ noteBranch: store.noteTree.noteBranch })
+  // clear out all user notes
   $('.userNotes').empty()
-  $('.userNotes').append(showNoteListTemplate)
-  // Add the event for delete to the class name for the delete button
-  // when it gets called parse the ID from the button name
-  // that was added in the handlebars template
-  $('.delete-note').on('click', function (event) {
-    event.preventDefault()
-    const data = event.target.id.split('-')
-    // console.log('Delete Note ID: ', data[2])
-    api.onDeleteNote(data[2])
-      .then(onDeleteSurveySuccess)
-      .catch(onDeleteSurveyFailure)
-  })
-  $('.update-note').on('click', function (event) {
-    event.preventDefault()
-    const data = event.target.id.split('-')
-    console.log('Update Note ID: ', data[2])
-    store.updateNoteID = data[2]
-    note.updateFormWithNoteData(data[2])
-  })
+  store.notes = data.notes
+  console.log('data.notes success', data.notes)
+  // console.log('getUserNotesSuccess noteTree: ', store.noteTree)
+  if (data.notes.length !== 0) {
+    note.createNoteTree()
+    console.log('building template')
+    const showNoteListTemplate = noteListTemplate({ noteBranch: store.noteTree.noteBranch })
+    $('.userNotes').append(showNoteListTemplate)
+    // Add the event for delete to the class name for the delete button
+    // when it gets called parse the ID from the button name
+    // that was added in the handlebars template
+    $('.delete-note').on('click', function (event) {
+      event.preventDefault()
+      const data = event.target.id.split('-')
+      // console.log('Delete Note ID: ', data[2])
+      api.onDeleteNote(data[2])
+        .then(onDeleteNoteSuccess)
+        .catch(onDeleteNoteFailure)
+    })
+    $('.update-note').on('click', function (event) {
+      event.preventDefault()
+      const data = event.target.id.split('-')
+      console.log('Update Note ID: ', data[2])
+      store.updateNoteID = data[2]
+      note.updateFormWithNoteData(data[2])
+    })
+  }
 }
-const onDeleteSurveySuccess = function () {
-  console.log('onDeleteSurveySuccess')
+const onDeleteNoteSuccess = function () {
+  console.log('onDeleteNoteSuccess')
   // Get the current list of user notes and update the UI
   api.retrieveUserNotes()
     .then(getUserNotesSuccess)
     .catch(getUserNotesFailure)
 }
-const onDeleteSurveyFailure = function (error) {
-  console.log('onDeleteSurveyFailure called', error)
+const onDeleteNoteFailure = function (error) {
+  console.log('onDeleteNoteFailure called', error)
 }
 const getUserNotesFailure = (error) => {
   console.log('getUserNotesFailure failure', error)
@@ -132,6 +136,18 @@ const createUserNoteFailure = function (error) {
 const addHandlers = () => {
   $('#add-note-button').on('click', onCreateNoteButton)
   $('#create_note').on('click', onNoteModal)
+  $('#sign-up-modal').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset')
+  })
+  $('#sign-in-modal').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset')
+  })
+  $('#create-questions-modal').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset')
+  })
+  $('#change-password-modal').on('hidden.bs.modal', function () {
+    $(this).find('form').trigger('reset')
+  })
 }
 
 module.exports = {

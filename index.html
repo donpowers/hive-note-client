@@ -25,7 +25,7 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
                       <li>
-                          <a href="#" data-toggle="modal" data-target="#sign-up-modal" class="sign-up" id="sign-up-navbar">Sign Up</a>
+                        <a href="#" data-toggle="modal" data-target="#sign-up-modal" class="sign-up" id="sign-up-navbar">Sign Up</a>
                       </li>
                       <li>
                         <a href="#" data-toggle="modal" data-target="#sign-in-modal" class="sign-in" id="sign-in-navbar">Sign In</a>
@@ -54,64 +54,71 @@
       <div class="create-note-button">
         <input type="submit" id="add-note-button" name="note button" value="Create New Note">
       </div>
-      <br>
-      <form id="sign-out">
-        <fieldset>
-        <input type="submit" name="submit" value="Sign Off">
-        </fieldset>
-      </form>
 
       <br>
 
       <div id="userNotes" class="userNotes"></div>
       <br>
 
-  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="Sign Up">
-  <div class="modal-dialog modal-lg" role="document">
-  <div class="modal-content">
-      <form id="sign-up">
-      <fieldset>
-        <div class="input-group">
-          <span class="input-group-addon"  id="emailAddress"></span>
-          <input type="text" name="credentials[email]" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
-          <span class="input-group-addon" id="passWord"></span>
-          <input type="password" name="credentials[password]" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
-          <span class="input-group-addon" id="basic-addon1"></span>
-          <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation" aria-describedby="basic-addon1">
-        </div>
-          <input type="submit" name="submit" value="Sign up">
-      </fieldset>
-      <br>
-      </form>
-    </div>
-  </div>
-  </div>
-
-      <form id="sign-in">
-      <fieldset>
-      <div class="input-group">
-        <span class="input-group-addon"  id="emailAddress"></span>
-        <input type="text" name="credentials[email]" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
-        <span class="input-group-addon" id="passWord"></span>
-        <input type="password" name="credentials[password]" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
-      </div>
-        <input type="submit" name="submit" value="Sign In">
-      </fieldset>
-      <br>
-      </form>
-
-      <form id="change-password">
-        <fieldset>
-          <div class="input-group" id="limit">
-            <span class="input-group-addon"  id="old-password"></span>
-            <input type="password" name="passwords[old]" class="form-control" placeholder="Old Password" aria-describedby="basic-addon1">
-            <span class="input-group-addon" id="passWord"></span>
-            <input type="password" name="passwords[new]" class="form-control" placeholder="New Password" aria-describedby="basic-addon1">
+      <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="Sign In">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <form id="sign-up">
+            <fieldset>
+              <div class="input-group">
+                <span class="input-group-addon"  id="emailAddress"></span>
+                <input type="text" name="credentials[email]" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+                <span class="input-group-addon" id="passWord"></span>
+                <input type="password" name="credentials[password]" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                <span class="input-group-addon" id="basic-addon1"></span>
+                <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Password Confirmation" aria-describedby="basic-addon1">
+              </div>
+                <input type="submit" name="submit" value="Sign up">
+            </fieldset>
+            <br>
+            </form>
           </div>
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-        <br>
-      </form>
+        </div>
+      </div>
+
+      <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="Sign In">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <form id="sign-in">
+              <fieldset>
+              <div class="input-group">
+                <span class="input-group-addon"  id="emailAddress"></span>
+                <input type="text" name="credentials[email]" class="form-control" placeholder="Email Address" aria-describedby="basic-addon1">
+                <span class="input-group-addon" id="passWord"></span>
+                <input type="password" name="credentials[password]" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+              </div>
+                <input type="submit" name="submit" value="Sign In">
+              </fieldset>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="Sign In">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <form id="change-password">
+            <fieldset>
+              <div class="input-group" id="limit">
+                <span class="input-group-addon"  id="old-password"></span>
+                <input type="password" name="passwords[old]" class="form-control" placeholder="Old Password" aria-describedby="basic-addon1">
+                <span class="input-group-addon" id="passWord"></span>
+                <input type="password" name="passwords[new]" class="form-control" placeholder="New Password" aria-describedby="basic-addon1">
+              </div>
+              <input type="submit" name="submit" value="Change Password">
+            </fieldset>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
       <br>
 
     <!-- Modal -->
