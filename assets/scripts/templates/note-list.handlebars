@@ -1,15 +1,18 @@
 
-{{#each notes}}
-  <p>Hive Name: {{this.hive_name}}</p>
-  <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled'>
-  <li>Observation Date: {{this.observation_date}}</li>
-  <li>Notes: {{this.observe}}</li>
-  <li>Task: {{this.task}}</li>
-  <li>Task Due Date: {{this.task_due_date}}</li>
-  <li>Task Status: {{this.task_status}}</li>
-  <div>
-    <p><button class="delete-note" name="button" id="button-delete-{{this.id}}">Delete</button>
-    <button class="update-note" name="button" id="button-update-{{this.id}}">Update</button></p>
-  </div>
-</ul>
+{{#each noteBranch}}
+  <a href="#"><h4>{{this.name}} Notes</h4></a>
+  {{#each this.notes}}
+    <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled'>
+      <li>Observation Date: {{this.observation_date}}</li>
+      <li>Notes: {{this.observe}}</li>
+      <li>Task: {{this.task}}</li>
+      <li>Task Due Date: {{this.task_due_date}}</li>
+      <li>Task Status: {{this.task_status}}</li>
+      <li>ID {{this.id}}</li>
+      <div>
+        <p><button class="delete-note" name="button" id="button-delete-{{this.id}}">Delete</button>
+        <button class="update-note" name="button" id="button-update-{{this.id}}">Update</button></p>
+      </div>
+    </ul>
+  {{/each}}
 {{/each}}
