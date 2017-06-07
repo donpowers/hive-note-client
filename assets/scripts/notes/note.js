@@ -8,7 +8,7 @@ const validateNoteData = function () {
   const observation = $('#observe').val()
   const futuretask = $('#futuretask').val()
   const taskduedate = $('#taskduedate').val()
-  const taskstatus = $('#taskstatus').val()
+  const taskstatus = $('input[name=status]:checked').val()
   if (!name) {
     $('#hiveNameRequired').text('Hive Name is required, please supply a name')
     return null
@@ -71,24 +71,33 @@ const createNoteTree = function () {
     return
   }
   let i
-  let hiveName = ''
+  let hiveName = store.notes[0].hive_name
   let name = store.notes[0].hive_name
-
+  const currentBranch = noteBranch
+  let branchedSaved = true
+  noteTree.noteBranch = []
   for (i in store.notes) {
     hiveName = store.notes[i].hive_name
     if (name === hiveName) {
-      noteBranch.name = name
-      noteBranch.notes.push(store.notes[i])
+      currentBranch.name = name
+      currentBranch.notes.push(store.notes[i])
     } else {
       // new branch, save previous one
-      noteTree.noteBranch.push(noteBranch)
-      noteBranch.notes = []
+      // make a copy to save
+      const data = JSON.parse(JSON.stringify(currentBranch))
+      noteTree.noteBranch.push(data)
+      // clear out previous
+      currentBranch.notes = []
       name = hiveName
-      noteBranch.name = name
-      noteBranch.notes.push(store.notes[i])
+      currentBranch.name = name
+      currentBranch.notes.push(store.notes[i])
+      branchedSaved = false
     }
   }
-  // noteTree.noteBranch.push(noteBranch)
+  if (!branchedSaved) {
+    const data = JSON.parse(JSON.stringify(currentBranch))
+    noteTree.noteBranch.push(data)
+  }
   console.log('noteTree: ', noteTree)
 }
 module.exports = {

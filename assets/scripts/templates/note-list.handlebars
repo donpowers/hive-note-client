@@ -1,7 +1,6 @@
 
 {{#each notes}}
   <p>Hive Name: {{this.hive_name}}</p>
-  {{log @index }}
   <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled'>
   <li>Observation Date: {{this.observation_date}}</li>
   <li>Notes: {{this.observe}}</li>
