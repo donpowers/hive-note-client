@@ -46,11 +46,14 @@ const onChangePassword = function (event) {
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
-  $('#sign-out').on('submit', onSignOut)
+//  $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('#change-password').hide()
-  $('#sign-out').hide()
+  // $('#change-password').hide()
+  $('#change-password-navbar').hide()
+  // $('#sign-out').hide()
   $('#add-note-button').hide()
+  $('#sign-out-navbar').hide()
+  $('#sign-out-navbar').on('click', onSignOut)
 }
 module.exports = {
   addHandlers

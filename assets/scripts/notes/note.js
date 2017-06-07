@@ -67,15 +67,19 @@ const noteTree = {
   'noteBranch': []
 }
 const createNoteTree = function () {
-  if (store.notes.length === 0) {
-    return
-  }
+  // empty noteTree to start
+  // store.noteTree.noteBranch = []
+  noteTree.noteBranch = []
+  noteBranch.notes = []
   let i
   let hiveName = store.notes[0].hive_name
   let name = store.notes[0].hive_name
   const currentBranch = noteBranch
-  let branchedSaved = true
-  noteTree.noteBranch = []
+  let branchedSaved = false
+  if (store.notes.length === 0) {
+    console.log('createNoteTree found no data')
+    return
+  }
   for (i in store.notes) {
     hiveName = store.notes[i].hive_name
     if (name === hiveName) {
