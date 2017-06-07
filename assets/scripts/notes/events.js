@@ -8,8 +8,10 @@ const api = require('./api')
 const getUserNotesSuccess = (data) => {
   console.log('getUserNotesSuccess success', data)
   store.notes = data.notes
+  note.createNoteTree()
   console.log('data.notes success', data.notes)
-  const showNoteListTemplate = noteListTemplate({ notes: data.notes })
+  console.log('getUserNotesSuccess noteTree: ', store.noteTree)
+  const showNoteListTemplate = noteListTemplate({ noteBranch: store.noteTree.noteBranch })
   $('.userNotes').empty()
   $('.userNotes').append(showNoteListTemplate)
   // Add the event for delete to the class name for the delete button
@@ -30,7 +32,6 @@ const getUserNotesSuccess = (data) => {
     store.updateNoteID = data[2]
     note.updateFormWithNoteData(data[2])
   })
-  note.createNoteTree()
 }
 const onDeleteSurveySuccess = function () {
   console.log('onDeleteSurveySuccess')

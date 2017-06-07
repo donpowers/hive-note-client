@@ -99,6 +99,7 @@ const createNoteTree = function () {
     noteTree.noteBranch.push(data)
   }
   console.log('noteTree: ', noteTree)
+  store.noteTree = noteTree
 }
 module.exports = {
   validateNoteData,
