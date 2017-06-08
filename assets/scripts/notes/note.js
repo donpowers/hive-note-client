@@ -105,6 +105,18 @@ const createNoteTree = function () {
   console.log('noteTree: ', noteTree)
   store.noteTree = noteTree
 }
+// const findTasksThatAreCommingDue = function () {
+//   console.log('findTasksThatAreCommingDue called')
+//   let i = 0
+//   for (i in store.noteTree) {
+//     const hiveBranch = store.noteTree[i]
+//     let x = 0
+//     for (x in hiveBranch) {
+//       const hiveCreate = store.noteTree[i]
+//     }
+//     console.log('hiveBranch: ', hiveBranch)
+//   }
+// }
 module.exports = {
   validateNoteData,
   updateFormWithNoteData,
