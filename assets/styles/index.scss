@@ -9,25 +9,35 @@ body {
   background-size: cover;
 }
 
-li {
-  font-size: 18px;
-  font-weight: normal;
-  color: #fff;
-}
-
 .app-title {
   font-size: 36px;
   font-weight: bold;
   color: #fff;
 }
 
+.no-underline {
+  text-decoration: none
+}
+
+.yes-underline {
+  text-decoration: underline
+}
+h4:hover{
+    background-color: #000;
+}
+
 .note-hive-name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   color: #fff;
   font-family: Tahoma, Geneva, Sans-serif;
 }
 
+li {
+  font-size: 18px;
+  font-weight: normal;
+  color: #fff;
+}
 .logged-in {
   font-size: 24px;
   font-weight: bold;
