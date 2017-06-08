@@ -14,7 +14,7 @@ const validateNoteData = function () {
     return null
   } else {
     $('#hiveNameRequired').text('')
-    noteCreate.note.hive_name = name
+    noteCreate.note.hive_name = name.toUpperCase()
     noteCreate.note.observation_date = notedate
     noteCreate.note.observe = observation
     noteCreate.note.task = futuretask

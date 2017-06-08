@@ -1,6 +1,6 @@
 <div id="accordion">
 {{#each noteBranch}}
-  <h5 id="note-branch" class='highlight note-hive-name'>Hive Notes For: {{this.name}}
+  <h4 id="note-branch" class='highlight note-hive-name'>Hive Notes For: {{this.name}}
   {{#each this.notes}}
     <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled note-toggle'>
       <li>Observation Date: {{this.observation_date}}</li>
@@ -21,5 +21,5 @@
       </div>
     </ul>
   {{/each}}
-  </h5>
+  </h4>
 {{/each}}</div>

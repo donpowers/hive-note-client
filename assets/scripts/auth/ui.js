@@ -24,6 +24,7 @@ const signInSuccess = (data) => {
   // Clear the form data entered
   $('#sign-in').trigger('reset')
   store.user = data.user
+  store.userFirstTime = true
   console.log('Token: ', store.user.token)
   showUserLoggedlMessage('Welcome ' + store.user.email)
   // $('#sign-in').hide()
@@ -47,6 +48,7 @@ const signOutSuccess = () => {
   console.log('Sign Out success: ')
   // clean up the stored value
   store.user = null
+  store.userFirstTime = true
   // $('#sign-in').show()
   // $('#sign-up').show()
   // $('#sign-in').show()
@@ -100,5 +102,6 @@ module.exports = {
   signOutFailure,
   signOutSuccess,
   changePasswordFailure,
-  changePasswordSuccess
+  changePasswordSuccess,
+  showModalMessage
 }

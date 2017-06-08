@@ -11,6 +11,12 @@ body {
 
 li {
   font-size: 18px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.app-title {
+  font-size: 36px;
   font-weight: bold;
   color: #fff;
 }
@@ -19,7 +25,9 @@ li {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
+  font-family: Tahoma, Geneva, Sans-serif;
 }
+
 .logged-in {
   font-size: 24px;
   font-weight: bold;
@@ -28,8 +36,4 @@ li {
 
 #limit {
   max-width: 500px;
-}
-
-h1,h2,h3,h4 {
-    color: #fff;
 }

@@ -35,8 +35,11 @@ const getUserNotesSuccess = (data) => {
       store.updateNoteID = data[2]
       note.updateFormWithNoteData(data[2])
     })
-    // Hide all notes and just show hive name
-    $('.note-toggle').toggle()
+    // Hide all notes and just show hive name on initial load
+    if (store.userFirstTime) {
+      $('.note-toggle').toggle()
+      store.userFirstTime = false
+    }
   }
 }
 const onDeleteNoteSuccess = function () {
@@ -66,11 +69,17 @@ const clearNoteHiveModalParameters = function () {
   // $('#observation_date').val(today)
   // $('#notedate').attr('value', '')
   // $('observation_date').val(new Date().toISOString().substring(0, 10))
-  $('notedate').val(new Date().toISOString().substring(0, 10))
-  $('#observe').val('')
+  // $('notedate').val(today)
+  document.getElementById('notedate').value = today
   $('#observe').val('')
   $('#futuretask').val('')
   $('#taskstatus').val('')
+  // $('input[name=status]').attr('checked', false)
+  document.getElementById('radio1').checked = false
+  document.getElementById('radio2').checked = false
+  // document.getElementById('taskstatus').value = ''
+  // $('taskduedate').val('')
+  document.getElementById('taskduedate').value = 'yyyy-mm-dd'
 }
 const onCreateNoteButton = function (event) {
   console.log('onCreateNoteButton called')
@@ -114,18 +123,24 @@ const onNoteModal = function (event) {
 
 const createUserNoteSuccess = function () {
   console.log('createUserNoteSuccess called')
+  // close the modal
+  $('#createNoteModal').modal('hide')
   // Get the current list of user notes and update the UI
   api.retrieveUserNotes()
     .then(getUserNotesSuccess)
     .catch(getUserNotesFailure)
+  showModalMessage('New note successfullly created')
 }
 
 const updateUserNoteSuccess = function () {
   console.log('updateUserNoteSuccess called')
+  // close the modal
+  $('#createNoteModal').modal('hide')
   // Get the current list of user notes and update the UI
   api.retrieveUserNotes()
     .then(getUserNotesSuccess)
     .catch(getUserNotesFailure)
+  showModalMessage('Note updated successfullly')
 }
 
 const updateUserNoteFailure = function (error) {
@@ -135,9 +150,13 @@ const updateUserNoteFailure = function (error) {
 const createUserNoteFailure = function (error) {
   console.log('createUserNoteFailure called', error)
 }
-
+const showModalMessage = function (message) {
+  $('#infoModalText').text(message)
+  $('#infoModal').modal('show')
+}
 const onNoteNameClick = function (event) {
-  console.log('note-branch clicked')
+  // console.log('note-branch clicked')
+  // This will show or hide the notes
   $(event.target).children().toggle()
 }
 const addHandlers = () => {
@@ -155,10 +174,13 @@ const addHandlers = () => {
   $('#change-password-modal').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
   })
-  // $('h5').click(function () {
+  // $('h4').click(function () {
   //   console.log('note-branch clicked', this)
   //   $(this).toggleClass.on('click', onclick)('highlight')
   // })
+  // Need to use document since we use handlebars.  The DOM is
+  // updated and since the node did not exist straight jquery
+  // does not work
   $(document).on('click', '.note-hive-name', onNoteNameClick)
 }
 
