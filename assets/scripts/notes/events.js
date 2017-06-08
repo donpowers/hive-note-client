@@ -35,6 +35,8 @@ const getUserNotesSuccess = (data) => {
       store.updateNoteID = data[2]
       note.updateFormWithNoteData(data[2])
     })
+    // Hide all notes and just show hive name
+    $('.note-toggle').toggle()
   }
 }
 const onDeleteNoteSuccess = function () {
@@ -133,6 +135,11 @@ const updateUserNoteFailure = function (error) {
 const createUserNoteFailure = function (error) {
   console.log('createUserNoteFailure called', error)
 }
+
+const onNoteNameClick = function (event) {
+  console.log('note-branch clicked')
+  $(event.target).children().toggle()
+}
 const addHandlers = () => {
   $('#add-note-button').on('click', onCreateNoteButton)
   $('#create_note').on('click', onNoteModal)
@@ -148,6 +155,11 @@ const addHandlers = () => {
   $('#change-password-modal').on('hidden.bs.modal', function () {
     $(this).find('form').trigger('reset')
   })
+  // $('h5').click(function () {
+  //   console.log('note-branch clicked', this)
+  //   $(this).toggleClass.on('click', onclick)('highlight')
+  // })
+  $(document).on('click', '.note-hive-name', onNoteNameClick)
 }
 
 module.exports = {

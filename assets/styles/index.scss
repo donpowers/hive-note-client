@@ -2,7 +2,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
-  background: url('../images/noteshandpenlight.jpg');
+  background: url('../images/note-field.jpg');
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
@@ -10,15 +10,26 @@ body {
 }
 
 li {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  color: #fff;
 }
 
+.note-hive-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
 .logged-in {
   font-size: 24px;
   font-weight: bold;
+  color: #fff;
 }
 
 #limit {
   max-width: 500px;
+}
+
+h1,h2,h3,h4 {
+    color: #fff;
 }

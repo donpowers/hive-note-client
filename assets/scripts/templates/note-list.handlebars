@@ -1,8 +1,8 @@
-
+<div id="accordion">
 {{#each noteBranch}}
-  <a href="#"><h4>{{this.name}} Notes</h4></a>
+  <h5 id="note-branch" class='highlight note-hive-name'>Hive Notes For: {{this.name}}
   {{#each this.notes}}
-    <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled'>
+    <ul data-id="{{this.id}}" data-name="{{this.hive_name}}" class='note-{{this.id}} list-unstyled note-toggle'>
       <li>Observation Date: {{this.observation_date}}</li>
       <li>Notes: {{this.observe}}</li>
       <li>Task: {{this.task}}</li>
@@ -10,9 +10,16 @@
       <li>Task Status: {{this.task_status}}</li>
       <li>ID {{this.id}}</li>
       <div>
-        <p><button class="delete-note" name="button" id="button-delete-{{this.id}}">Delete</button>
-        <button class="update-note" name="button" id="button-update-{{this.id}}">Update</button></p>
+        <p>
+          <button type="button" class="btn btn-default btn-sm delete-note" name="button" id="button-delete-{{this.id}}">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+          </button>
+          <button type="button" class="btn btn-default btn-sm update-note" name="button" id="button-update-{{this.id}}">
+            <span class="glyphicon glyphicon-pencil"></span> Update
+          </button>
+        </p>
       </div>
     </ul>
   {{/each}}
-{{/each}}
+  </h5>
+{{/each}}</div>
