@@ -39,7 +39,7 @@ During this inspection process the beekeeper will make observations. These
 the user to track a future task.
 
 Screen Shot Deployed App
-![Alt text](/assets/images/HiveNoteScreenShot.png?raw=true Hive Notes Screen Shot”)
+![Alt text](/assets/images/HiveNoteScreenShot.png?raw=true "Hive Notes Screen Shot”)
 
 Wireframe of front end. http://i.imgur.com/tJLH3en.jpg
 
@@ -102,7 +102,7 @@ The next 3 days was all Front End.  My goal was to see how much I could do in
 day one to make the determination if I could use Angular. By end of day one I had
 used up a lot of hours and still had several items for the CRUD to do. I made the
 decision to pass on the Front End Framework and implement some UI features that
-I did had not implemented before, Nav Bar and a collapse list. Each of these
+I had not implemented before, Nav Bar and a collapse list. Each of these
 features took many hours to finally implement.  Some simple things like getting
 a click on h4 tag took me several hours to figure out.  The root of the challenge
 was using Handlebars and using jquery for events. Can't add the event handler
