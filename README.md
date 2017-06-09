@@ -39,7 +39,8 @@ During this inspection process the beekeeper will make observations. These
 the user to track a future task.
 
 Screen Shot Deployed App
-![Alt text](/assets/images/HiveNoteScreenShot.png?raw=true "Hive Notes Screen Shot”)
+
+![alt text](https://github.com/donpowers/hive-note-client/blob/master/assets/images/HiveNoteScreenShot.png)
 
 Wireframe of front end. http://i.imgur.com/tJLH3en.jpg
 
