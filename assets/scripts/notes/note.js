@@ -49,29 +49,32 @@ const findNoteByID = function (idMatch) {
   }
   result
 }
+// Use this object to send the newly created note object to back end
 const noteCreate = {
   'note': {
     'hive_name': '',
     'observation_date': '',
     'observe': 1,
-    'task': 'unknown',
+    'task': '',
     'task_due_date': '',
     'task_status': ''
   }
 }
+// holds the hive and all it's notes
 const noteBranch = {
   'name': '',
   'notes': []
 }
+// holds all hives or branches on the true
 const noteTree = {
   'noteBranch': []
 }
+// bulid out the tree used in the template
 const createNoteTree = function () {
   // empty noteTree to start
   // store.noteTree.noteBranch = []
   noteTree.noteBranch = []
   noteBranch.notes = []
-  let i
   let hiveName = store.notes[0].hive_name
   let name = store.notes[0].hive_name
   const currentBranch = noteBranch
@@ -80,6 +83,7 @@ const createNoteTree = function () {
     // console.log('createNoteTree found no data')
     return
   }
+  let i
   for (i in store.notes) {
     hiveName = store.notes[i].hive_name
     if (name === hiveName) {
