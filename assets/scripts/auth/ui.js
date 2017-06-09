@@ -4,7 +4,7 @@ const store = require('../store')
 const notesUI = require('../notes/ui')
 
 const signUpSuccess = (data) => {
-  console.log('signUpSuccess called: ', data)
+  // console.log('signUpSuccess called: ', data)
   // Clear the form data entered
   $('#sign-up').trigger('reset')
   showModalMessage('Sign-up Success!')
@@ -20,12 +20,12 @@ const signUpFailure = (error) => {
 }
 
 const signInSuccess = (data) => {
-  console.log('Sign-in success: ', data)
+  // console.log('Sign-in success: ', data)
   // Clear the form data entered
   $('#sign-in').trigger('reset')
   store.user = data.user
   store.userFirstTime = true
-  console.log('Token: ', store.user.token)
+  // console.log('Token: ', store.user.token)
   showUserLoggedlMessage('Welcome ' + store.user.email)
   // $('#sign-in').hide()
   // $('#sign-up').hide()
@@ -39,13 +39,13 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = (error) => {
-  console.log('Sign In Failure')
+  // console.log('Sign In Failure')
   showModalMessage('You were unable to sign-in. Please Try Again or Sign Up.')
   $('#sign-in').trigger('reset')
   console.error(error)
 }
 const signOutSuccess = () => {
-  console.log('Sign Out success: ')
+  // console.log('Sign Out success: ')
   // clean up the stored value
   store.user = null
   store.userFirstTime = true
@@ -63,10 +63,10 @@ const signOutSuccess = () => {
   $('#sign-up-navbar').show()
   // Clear out user notes
   $('#userNotes').empty()
-  console.log('Store at sign-out: ', store)
+  // console.log('Store at sign-out: ', store)
   store.notes = []
   store.noteTree = {}
-  console.log('Store at sign-out: ', store)
+  // console.log('Store at sign-out: ', store)
   showUserLoggedlMessage('Welcome! Please Sign In or Sign Up.')
 }
 const signOutFailure = (error) => {
@@ -75,13 +75,13 @@ const signOutFailure = (error) => {
 }
 const changePasswordSuccess = () => {
   // Clear the form data entered
-  console.log('Change Password success')
+  // console.log('Change Password success')
   showModalMessage('Your password has been udpated.')
   $('#change-password').trigger('reset')
   $('#change-password-modal').modal('toggle')
 }
 const changePasswordFailure = (error) => {
-  console.log('Change Password Out Failure')
+  // console.log('Change Password Out Failure')
   showModalMessage('You were unable to change your password. Please Try Again.')
   $('#change-password').trigger('reset')
   console.error(error)

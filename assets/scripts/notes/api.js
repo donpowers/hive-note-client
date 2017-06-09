@@ -4,7 +4,7 @@ const store = require('../store')
 const config = require('../config')
 
 const retrieveUserNotes = () => {
-  console.log('note api getUserNotes Called')
+  // console.log('note api getUserNotes Called')
   return $.ajax({
     url: config.apiOrigin + '/my-notes',
     method: 'GET',
@@ -13,7 +13,7 @@ const retrieveUserNotes = () => {
   })
 }
 const createUserNote = (data) => {
-  console.log('note api createUserNotes Called', data)
+  // console.log('note api createUserNotes Called', data)
   return $.ajax({
     url: config.apiOrigin + '/notes',
     method: 'POST',
@@ -23,7 +23,7 @@ const createUserNote = (data) => {
   })
 }
 const onDeleteNote = (id) => {
-  console.log('onDeleteNote Called data:', id)
+  // console.log('onDeleteNote Called data:', id)
   return $.ajax({
     url: config.apiOrigin + '/notes/' + id,
     method: 'DELETE',
@@ -33,7 +33,7 @@ const onDeleteNote = (id) => {
 }
 
 const updateUserNote = (data, id) => {
-  console.log('updateUserNote Called:', data)
+  // console.log('updateUserNote Called:', data)
   return $.ajax({
     url: config.apiOrigin + '/notes/' + id,
     method: 'PATCH',

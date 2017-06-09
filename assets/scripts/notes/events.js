@@ -6,15 +6,15 @@ const note = require('./note')
 const api = require('./api')
 
 const getUserNotesSuccess = (data) => {
-  console.log('getUserNotesSuccess success', data)
+  // console.log('getUserNotesSuccess success', data)
   // clear out all user notes
   $('.userNotes').empty()
   store.notes = data.notes
-  console.log('data.notes success', data.notes)
+  // console.log('data.notes success', data.notes)
   // console.log('getUserNotesSuccess noteTree: ', store.noteTree)
   if (data.notes.length !== 0) {
     note.createNoteTree()
-    console.log('building template')
+    // console.log('building template')
     const showNoteListTemplate = noteListTemplate({ noteBranch: store.noteTree.noteBranch })
     $('.userNotes').append(showNoteListTemplate)
     // Add the event for delete to the class name for the delete button
@@ -23,7 +23,7 @@ const getUserNotesSuccess = (data) => {
     $('.delete-note').on('click', function (event) {
       event.preventDefault()
       const data = event.target.id.split('-')
-      // console.log('Delete Note ID: ', data[2])
+      // // console.log('Delete Note ID: ', data[2])
       api.onDeleteNote(data[2])
         .then(onDeleteNoteSuccess)
         .catch(onDeleteNoteFailure)
@@ -31,7 +31,7 @@ const getUserNotesSuccess = (data) => {
     $('.update-note').on('click', function (event) {
       event.preventDefault()
       const data = event.target.id.split('-')
-      console.log('Update Note ID: ', data[2])
+      // console.log('Update Note ID: ', data[2])
       store.updateNoteID = data[2]
       note.updateFormWithNoteData(data[2])
     })
@@ -43,17 +43,17 @@ const getUserNotesSuccess = (data) => {
   }
 }
 const onDeleteNoteSuccess = function () {
-  console.log('onDeleteNoteSuccess')
+  // console.log('onDeleteNoteSuccess')
   // Get the current list of user notes and update the UI
   api.retrieveUserNotes()
     .then(getUserNotesSuccess)
     .catch(getUserNotesFailure)
 }
 const onDeleteNoteFailure = function (error) {
-  console.log('onDeleteNoteFailure called', error)
+  // console.log('onDeleteNoteFailure called', error)
 }
 const getUserNotesFailure = (error) => {
-  console.log('getUserNotesFailure failure', error)
+  // console.log('getUserNotesFailure failure', error)
   console.error(error)
 }
 
@@ -64,7 +64,7 @@ const clearNoteHiveModalParameters = function () {
   const day = ('0' + now.getDate()).slice(-2)
   const month = ('0' + (now.getMonth() + 1)).slice(-2)
   const today = now.getFullYear() + '-' + (month) + '-' + (day)
-  console.log('Date: ' + today)
+  // console.log('Date: ' + today)
   // $('#notedate').trigger('reset')
   // $('#observation_date').val(today)
   // $('#notedate').attr('value', '')
@@ -82,7 +82,7 @@ const clearNoteHiveModalParameters = function () {
   document.getElementById('taskduedate').value = 'yyyy-mm-dd'
 }
 const onCreateNoteButton = function (event) {
-  console.log('onCreateNoteButton called')
+  // console.log('onCreateNoteButton called')
   event.preventDefault()
   clearNoteHiveModalParameters()
   $('#modalTitle').text('Create Note')
@@ -92,37 +92,37 @@ const onCreateNoteButton = function (event) {
 // When the Note modal create button is clicked, determine which
 // action we should do, Create or Update
 const onNoteModal = function (event) {
-  console.log('onCreateNoteModal called', event)
+  // console.log('onCreateNoteModal called', event)
   event.preventDefault()
   const buttonAction = $('#' + event.target.id).text()
-  console.log('onCreateNoteModal called name buttonAction:' + buttonAction)
+  // console.log('onCreateNoteModal called name buttonAction:' + buttonAction)
   if (buttonAction === 'Create') {
     const data = note.validateNoteData()
     if (data) {
-      console.log('validateNoteData Data to create:', data)
+      // console.log('validateNoteData Data to create:', data)
       api.createUserNote(data)
         .then(createUserNoteSuccess)
         .catch(createUserNoteFailure)
     } else {
-      console.log('validateNoteData returned null')
+      // console.log('validateNoteData returned null')
     }
   } else {
-    console.log('Update Note Called')
+    // console.log('Update Note Called')
     const updateData = note.validateNoteData()
     if (updateData) {
-      console.log('validateNoteData Data to update:', updateData)
-      console.log('validateNoteData ID to update:', store.updateNoteID)
+      // console.log('validateNoteData Data to update:', updateData)
+      // console.log('validateNoteData ID to update:', store.updateNoteID)
       api.updateUserNote(updateData, store.updateNoteID)
         .then(updateUserNoteSuccess)
         .catch(updateUserNoteFailure)
     } else {
-      console.log('validateNoteData returned null')
+      // console.log('validateNoteData returned null')
     }
   }
 }
 
 const createUserNoteSuccess = function () {
-  console.log('createUserNoteSuccess called')
+  // console.log('createUserNoteSuccess called')
   // close the modal
   $('#createNoteModal').modal('hide')
   // Get the current list of user notes and update the UI
@@ -133,7 +133,7 @@ const createUserNoteSuccess = function () {
 }
 
 const updateUserNoteSuccess = function () {
-  console.log('updateUserNoteSuccess called')
+  // console.log('updateUserNoteSuccess called')
   // close the modal
   $('#createNoteModal').modal('hide')
   // Get the current list of user notes and update the UI

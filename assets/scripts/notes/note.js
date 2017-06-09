@@ -2,7 +2,7 @@
 const store = require('../store')
 
 const validateNoteData = function () {
-  console.log('validateNoteData called')
+  // console.log('validateNoteData called')
   const name = $('#name').val()
   const notedate = $('#notedate').val()
   const observation = $('#observe').val()
@@ -20,13 +20,13 @@ const validateNoteData = function () {
     noteCreate.note.task = futuretask
     noteCreate.note.task_due_date = taskduedate
     noteCreate.note.task_status = taskstatus
-    console.log('validateNoteData changes are: ', noteCreate.note)
+    // console.log('validateNoteData changes are: ', noteCreate.note)
     return noteCreate
   }
 }
 const updateFormWithNoteData = function (id) {
   const data = findNoteByID(id)
-  console.log('updateFormWithNoteData called', data)
+  // console.log('updateFormWithNoteData called', data)
   $('#name').val(data.hive_name)
   $('#notedate').val(data.observation_date)
   $('#observe').val(data.observe)
@@ -77,7 +77,7 @@ const createNoteTree = function () {
   const currentBranch = noteBranch
   let branchedSaved = false
   if (store.notes.length === 0) {
-    console.log('createNoteTree found no data')
+    // console.log('createNoteTree found no data')
     return
   }
   for (i in store.notes) {
@@ -102,7 +102,7 @@ const createNoteTree = function () {
     const data = JSON.parse(JSON.stringify(currentBranch))
     noteTree.noteBranch.push(data)
   }
-  console.log('noteTree: ', noteTree)
+  // console.log('noteTree: ', noteTree)
   store.noteTree = noteTree
 }
 // const findTasksThatAreCommingDue = function () {
